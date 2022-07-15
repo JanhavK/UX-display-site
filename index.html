@@ -1,0 +1,475 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+	<title>Carbon Tiptoe! (CT)</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+	/* --- Start of html and body css, just some css to be used throughout the site. --- */
+	body, html{
+	font-family: 'Poppins';
+	height: 100%;
+	scroll-behavior: smooth;
+	}
+	/* --- End of html and body css --- */
+	
+	/* --- Start of top navigation bar css, this is the top navigation bar which has various selections most of which are dummy buttons to simulate possible site buttons. --- */
+	.topnav{
+	background-color: white;
+	overflow: hidden;
+	box-shadow: 0px 0px 10px 0.5px black;
+	position: relative;
+	}
+	
+	.navtitle{
+	float: left;
+	font-size: 25pt;
+	font-weight: bold;
+	color: #E63244;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+
+	.topnav a{
+	float: left;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	cursor: pointer;
+	}
+	
+	.topnav a:hover, .topnav a.active{
+	background-color: #E63244;
+	color: white;
+	transition: background-color 1000ms, color 1000ms;
+	}
+	
+	.topreg{
+	font-weight: bold;
+	float: right;
+	color: white;
+	background-color: #E63244;
+	}
+	
+	.topreg:hover, .topreg.active{
+	background: #A63244;
+	color: #E63244;
+	transition: background-color 1000ms, color 1000ms;
+	}
+	/* --- End of top navigation bar css --- */
+	
+	/* --- Start of sliding image and text css, this is the main visual background and text welcoming users to the site. --- */
+	.img1{
+	background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("gas.jpg");
+	min-height: 100%;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	}
+	
+	.textcont{
+	position: relative;
+	text-align: center;
+	}
+	
+	.middesp{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+	}
+	/* --- End of sliding image and text css --- */
+	
+	/* --- Start of heading selection css, just some headings I used throughout the site. --- */
+	.h1{
+	font-size: 65pt;
+	font-weight: bold;
+	color: #E63244;
+	text-align: center;
+	}
+	
+	.h2{
+	font-size: 45pt;
+	text-align: center;
+	}
+	
+	.h3{
+	font-size: 65pt;
+	font-weight: bold;
+	color: #E63244;
+	text-align: center;
+	}
+	
+	.h4{
+	font-size: 20pt;
+	
+	color: black;
+	text-align: center;
+	}
+	
+	.h5{
+	font-size: 30pt;
+	font-weight: bold;
+	color: black;
+	text-align: center;
+	}
+	/* --- End of sliding image and text css --- */
+	
+	/* --- Start of infomation box, an information box with relevant information relating to our site's theme. --- */
+	.img2{
+	padding-right: 100px;
+	float: right;
+	}
+	
+	.boxed_text{
+	padding: 10px;
+	border: 5px solid white;
+	margin: 0;
+	width: 100%;
+	background-color: white;
+	border-radius: 10px;
+	}
+	
+	.boxed_text2{
+	padding: 10px;
+	border: 20px solid #E63244;
+	margin-left: auto;
+    margin-right: auto;
+	}
+	
+	.container{
+	padding: 0.01em 16px;
+	padding-top: 64px;
+    padding-bottom: 32px;
+	margin-left: auto;
+    margin-right: auto;
+	background-color: #E63244;
+	}
+	/* --- End of infomation box --- */
+	
+	/* --- Start of main register button, simply a register button that I fancied up with the color which was selected for me. --- */
+	.register{
+	margin: 50px auto;
+	display: block;
+	width: 250px;
+	height: 75px;
+	border: 3px solid white;
+	background-color: #E63244;
+	color: white;
+	font-weight: bold;
+	font-size: 25pt;
+	border-radius: 10px;
+	transition: background-color 1000ms, color 1000ms;
+	}
+	
+	.register:hover{
+	background-color: #A63244;
+	color:white;
+	cursor: pointer;
+	transition: background-color 1000ms, color 1000ms;
+	}
+	/* --- End of main register button --- */
+	
+	/* --- Start of trigger modal, just a basic trigger modal of which I used shadowing and z-index to emphasise the modal and made it stand out from the background which is the page once clicked. I used a container for the box behind the modal. --- */
+	.trigger-modal_container{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	pointer-events: none;
+	opacity: 0;
+	transition: all 500ms ease;
+	z-index: 0;
+	}
+	
+	.trigger-modal_container:target{
+	opacity: 1;
+	pointer-events: auto;
+	z-index:2
+	}
+	
+	.trigger-modal{
+	width: 450px;
+	height: 750px;
+	margin: auto;
+	position: fixed;
+	top: 40px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	padding: 20px;
+	box-shadow: 0px 0px 30px 5px black;
+	background: white;
+	}
+	
+	.trigger-modal_heading{
+	width: 100%;
+	display: block;
+	height: 20px;
+	margin-bottom: 30px;
+	color: #E63244;
+	font-size: 20pt;
+	}
+	
+	.trigger-modal_cat{
+	font-size: 10pt;
+	font-weight: bold;
+	}
+	
+	input{
+	margin-bottom: 17px;
+	padding: 5px;
+	width: 100%;
+	border-radius: 5px;
+	height: 100%;
+	border: 0px solid white;
+	background-color: #E7D2D4;
+	font-size: 7.5pt;
+	}
+	
+	.close{
+	color: black;
+	position: absolute;
+	padding: 7px;
+	top: 0px;
+	right: 0px;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: none;
+	}
+	
+	.close:hover{
+	background: #E63244;
+	}
+	
+	.submit{
+	margin-top: 5px;
+	background: #E63244;
+	color: white;
+	text-align: center;
+	font-size: 10pt;
+	font-weight: bold;
+	cursor: pointer;
+	}
+	
+	.submit:hover{
+	background: #A63244;
+	}
+	
+	.account{
+	display: inline-block;
+	text-align: left;
+	float: left;
+	font-size: 7.5pt;
+	}
+	
+	.forgot{
+	display: inline-block;
+	text-align: right;
+	float: right;
+	font-size: 7.5pt;
+	}
+	/* --- End of trigger modal --- */
+
+	/* --- Start of button to the top, this is a button that I created for the ease of user to return to the top of the page. --- */
+	#btn-back-to-top {
+	position: fixed;
+	bottom: 32px;
+	right: 17px;
+	display: none;
+	background-color: #E63244;
+	border-radius: 100px;
+	border: 5px solid white;
+	color: white;
+	cursor:pointer;
+	box-shadow: 0px 0px 30px 5px black;
+	padding: 5px;
+	padding-left: 15px;
+	}
+	/* --- End of button to the top --- */
+	
+	/* --- Start of misc, just some misc css that I used throughout the site. --- */
+	.custom-color {
+	color: #E63244;
+	}
+	
+	hr{
+	background-color: #E63244;
+	height: 1px;
+	border: none;
+	}
+	
+	.imgcred {
+	position: absolute;
+	bottom: 55px;
+	right: 60px;
+	font-weight: bold;
+	color: white;
+	background-color: #E63244;
+	border: 3px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	}
+	/* --- End of misc --- */
+	
+	</style>
+</head>
+
+<body>
+<!-- This is the top nav that I made with the css I defined above, the concept behind it was to simulate what possible buttons or re-directions that could possibly be present in a site of this concept. -->
+<div class="topnav" id="myTopnav">
+	<span class="navtitle custom-color">Carbon Tiptoe</span>
+	<div class="hcenter1">
+		<a href="#">Home</a>
+		<a href="#trigger-modal">Calculate</a>
+		<a href="#">About us</a>
+		<a href="#">Meet the team</a>
+		<a href="#">Our projects</a>
+		<a href="#">Contact us</a>
+	</div>
+	<div class="topreg">
+		<a href="#trigger-modal" id="register">Register</a>
+	</div>
+</div>
+
+
+<!-- This is main landing image and text to welcome users, provide the site name and the main register button to get users to register. -->
+<div class="img1 textcont">
+  <div class="middesp" style="white-space:nowrap;">
+		<span class="h1">Carbon Tiptoe</span>
+	<br>
+		<span class="h2">Register today to get started</span>
+	<br>
+		<button class="register"><a href="#trigger-modal">Register</a></button>
+		<span class="h4" style="color: black; font-weight: normal;"> or scroll down to learn more!</span>
+  </div>
+  <div class="imgcred">Image from: <a href="https://carboncopy.info/2-yrs-on-coal-plants-allowed-to-pollute-green-court-asks-govt-to-explain-consumers-pay-for-clean-coal/" target="_blank">Coal plants</a> </div>
+</div>
+
+<!-- This is the information box to provide information about the theme of our site which is about carbon footprints. -->
+<div class="container">
+	<div class="boxed_text">
+		<span class="h3">What is carbon footprint?</span>
+			<br>
+			<img class="img2" alt="carbon footprint" width="600" height="250" src="footprint.jpg">
+			<br>
+			<span class="h4">
+			Carbon footprint is the total amount of greenhouse gas you emit. <br><br>
+			Factors that often influence your emissions are:<br>
+			* Transport (what car you drive).<br>
+			* Food (diet).<br>
+			* What powers your heating.<br>
+			* How you dispose of rubbish.<br>
+		</span>
+			<div style="float: right; color: black; font-weight: bold;">Image from: <a href="https://mahb.stanford.edu/blog/carbon-footprint/" target="_blank">Carbon footprint</a> </div>
+			<br>
+	</div>
+
+	<br>
+
+	<div class="boxed_text">
+		<span class="h3">How do I reduce my carbon footprint?</span>
+			<br>
+			<img class="img2" alt="meat" width="600" height="250" src="meat.jpg">
+			<br>
+			<span class="h4">
+			Reducing individual carbon footprint can overall have a large impact on the total global carbon footprint. <br><br>
+			Things you can do:<br>
+			* Consume local and current seasonal products<br>
+			* Limit meat intake, especially beef.<br>
+			* Purchase fish from sustainable fishing companies.<br>
+			* Use reusable shopping bags and avoid products with excessive packaging.<br>
+			* Only buy what you need.<br>
+		</span>
+			<div style="float: right; color: black; font-weight: bold;">Image from: <a href="https://pbs.twimg.com/profile_images/1391299145680318466/cmJPbl47_400x400.jpg" target="_blank">Meat</a> </div>
+			<br>
+	</div>
+</div>
+
+<!-- This is the button I made for the ease of user to get back to the top of the page. -->
+<button type="button" id="btn-back-to-top">
+	<img width="40" alt="" height="40" src="arrow.png">Top
+</button>
+
+<div class="boxed_text2">
+	<footer>
+		<p class="h5">To learn more about your footprint simply register:</p>
+		
+		<div class="rightf">
+			<button class="register"><a href="#trigger-modal">Register</a></button>
+		</div>
+	</footer>
+</div>
+
+<!-- This is the trigger modal I made for the registration information. -->
+<div class="trigger-modal_container" id="trigger-modal">
+	<div class="trigger-modal">
+		<a href="#" class="close">x</a>
+		<span class="trigger-modal_heading">Enter your details</span>
+		<div id="ct-form">
+			<form action="#">
+				<hr>
+				<div id="userDetails">
+					<label>Given name:</label><br>
+					<input type="text"><br>
+					<label>Surname:</label><br>
+					<input type="text"><br>
+					<label>Username:</label><br>
+					<input type="text"><br>
+					<label>Password:</label><br>
+					<input type="password"> <br>
+				</div>
+				<br>
+				<div id="addresses">
+					<label>Home Address:</label><br>
+					<input type="text"><br>
+					<label>Work Address:</label><br>
+					<input type="text"><br>
+				</div>
+				<br>
+				<div id="contacts">
+					<label>Mobile number:</label><br>
+					<input type="text"><br>
+					<label>Email:</label><br>
+					<input type="text"><br>
+				</div>
+				<input type="submit" class="submit" value="Submit"> 
+			</form>
+		</div>
+		<a href="#" class="account">
+		Have an account already?
+		</a>
+		<a href="#" class="forgot">
+		Forgot password?
+		</a>
+	</div>
+</div>
+
+<script>
+	let mybutton = document.getElementById("btn-back-to-top");
+
+	window.onscroll = function () {
+	  scrollFunction();
+	};
+
+	function scrollFunction() {
+	  if (
+		document.body.scrollTop > 20 ||
+		document.documentElement.scrollTop > 20
+	  ) {
+		mybutton.style.display = "block";
+	  } else {
+		mybutton.style.display = "none";
+	  }
+	}
+
+	mybutton.addEventListener("click", backToTop);
+
+	function backToTop() {
+	  setTimeout( function(){("html").animate(window.scrollTo(0, 0))}, 1);
+	}
+</script>
+</body>
+</html>
